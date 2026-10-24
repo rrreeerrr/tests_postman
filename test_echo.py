@@ -4,7 +4,7 @@ def test_get_with_params():
     url = "https://postman-echo.com/get?name=Ivan&city=Moscow"
     response = requests.get(url)
 
-    assert response.status_code == 404
+    assert response.status_code == 200
 
     info = response.json()
 
