@@ -11,7 +11,6 @@ def test_get_with_params():
     assert info["args"]["name"] == "Ivan"
     assert info["args"]["city"] == "Moscow"
 
-test_get_with_params()
 print("Успешно")
 
 
@@ -32,7 +31,6 @@ def test_post():
     assert info["data"]["name"] == "Elena"
     assert info["data"]["course"] == "QA"
 
-test_post()
 print("Успешно")
 
 
@@ -46,7 +44,6 @@ def test_get_empty():
 
     assert info["args"] == {}
 
-test_get_empty()
 print("Успешно")
 
 
@@ -64,7 +61,6 @@ def test_post_query():
     assert info["args"]["status"] == "success"
     assert info["data"]["letter"] == "Is it works?"
     
-test_post_query()
 print("Успешно")
 
 
@@ -79,7 +75,6 @@ def test_post_with_text():
 
     assert info["data"] == "Просто текст"
 
-test_post_query()
 print("Успешно")
 
 
@@ -93,5 +88,4 @@ def test_delete():
 
     assert info["url"] == "https://postman-echo.com/delete"
 
-test_delete()
 print("Успешно")
