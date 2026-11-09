@@ -1,5 +1,8 @@
+import allure 
 import requests
 
+@allure.title("Get-запрос с параметрами (Ivan, Moscow)")
+@allure.description("Проверяем, чтобы сервер возвращал код ответа 200 и верные данные")
 def test_get_with_params():
     url = "https://postman-echo.com/get?name=Ivan&city=Moscow"
     response = requests.get(url)
@@ -13,7 +16,8 @@ def test_get_with_params():
 
 print("Успешно")
 
-
+@allure.title("Post-запрос с данными (Elena, QA)")
+@allure.description("Проверяем, что сервер принимает данные и возвращает код ответа 200")
 def test_post():
     url = "https://postman-echo.com/post"
     
@@ -34,6 +38,8 @@ def test_post():
 print("Успешно")
 
 
+@allure.title("Get-запрос с пустыми параметрами")
+@allure.description("Проверяем, что запрос без данных обрабатывается и возвращает код ответа 200")
 def test_get_empty():
     url = "https://postman-echo.com/get"
     response = requests.get(url)
@@ -47,6 +53,8 @@ def test_get_empty():
 print("Успешно")
 
 
+@allure.title("Post-запрос с параметрами и телом")
+@allure.description("Проверяем, что сервер принимает параметр status в URL и данные в теле, возвращает код 200")
 def test_post_query():
     url = "https://postman-echo.com/post?status=success"
     my_data = {
@@ -64,6 +72,8 @@ def test_post_query():
 print("Успешно")
 
 
+@allure.title("Post-запрос с текстом")
+@allure.description("Проверяем, что сервер принимает текст и возвращает код ответа 200")
 def test_post_with_text():
     url = "https://postman-echo.com/post"
     my_text = "Просто текст"
@@ -78,6 +88,8 @@ def test_post_with_text():
 print("Успешно")
 
 
+@allure.title("Delete-запрос")
+@allure.description("Проверяем, что сервер подтверждает удаление заметки и возвращает код ответа 200")
 def test_delete():
     url = "https://postman-echo.com/delete"
     response = requests.delete(url)
