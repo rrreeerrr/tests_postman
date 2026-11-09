@@ -1,0 +1,38 @@
+name: Tests with Allure
+
+on:
+ push: 
+  branches: ["main"]
+
+jobs:
+ test:
+  runs-on: ubuntu-latest
+  steps:
+  - uses: actions/checkout@v4
+
+  - name: set up Python
+    uses: actions/setup-python@v5
+    with:
+     python-version: '3.10' 
+  - name: install dependencies
+    run: | 
+      pip install -r requirements.txt
+
+  - name: tests with allure
+    run: |
+      pytest --alluredir=allure-results
+
+  - name: make allure report
+    uses: simple-elf/allure-report-action@master
+    if: always()
+    with:
+      allure_results: allure-results
+      allure_history: allure-history
+
+  - name: add report to github pages
+    if: always()
+    uses: peaceiris/actions-gh-pages@v4
+    with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
+      publish_branch: gh-pages
+      publish_dir: allure-history
